@@ -1,0 +1,58 @@
+(def (test a b)
+     (+ a b))
+
+(def (sayHello name)
+     (set statement (+ "Hello " name))
+     (print statement))
+
+(def (call fn x)
+     (fn x))
+
+(def (range n1 n2)
+     (def (range' ls i)
+          (if (< i n1)
+              ls
+            (range' (: i ls) (- i 1))))
+     (range' empty n2))
+
+(def (map fn list)
+     (if (== (len list) 0)
+         list
+       (: (fn (head list)) (map fn (tail list)))))
+
+(def (makeAdder x)
+     (def (add y)
+          (+ x y)))
+
+(set add3 (makeAdder 3))
+
+(set hundred 100)
+(set ten 10)
+
+(print (* (+ 3 hundred) ten))
+
+(print (add3 4))
+(print (add3 2))
+
+(exit 0)
+
+(print (test 1 2))
+
+(sayHello "James")
+(call sayHello "George")
+
+
+
+(def (addTwo x)
+     (+ x 2))
+
+(set myList (list 1 2 3))
+(print myList)
+(print (map addTwo myList))
+(map sayHello (list "Peter" "Paul" "Mary"))
+
+(def (testIt x)
+     (print (range 1 x)))
+
+(map testIt (range 0 70))
+
